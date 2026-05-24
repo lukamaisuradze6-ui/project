@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Special Message</title>
     <style>
-        /* Base setup and centering */
         body {
             margin: 0;
             padding: 0;
@@ -18,7 +17,6 @@
             overflow: hidden;
         }
 
-        /* Main trigger button */
         .love-button {
             padding: 15px 30px;
             font-size: 1.2rem;
@@ -37,7 +35,6 @@
             transform: scale(1.05);
         }
 
-        /* The Dark Background Overlays */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -54,12 +51,10 @@
             z-index: 10;
         }
 
-        /* Stack the final popup cleanly on top of the first one */
         #finalModal {
             z-index: 20; 
         }
 
-        /* The Custom HTML Pop-up Boxes */
         .modal-box {
             background-color: white;
             padding: 40px;
@@ -78,7 +73,6 @@
             font-size: 1.8rem;
         }
 
-        /* Button Container */
         .button-group {
             display: flex;
             gap: 15px;
@@ -86,7 +80,6 @@
             flex-wrap: wrap;
         }
 
-        /* Styling for the choices */
         .choice-btn {
             padding: 12px 25px;
             font-size: 1rem;
@@ -116,7 +109,6 @@
             transform: scale(1.05);
         }
 
-        /* Go Back Button styling */
         .btn-back {
             background-color: #f0f0f0;
             color: #555;
@@ -127,7 +119,6 @@
             transform: scale(1.05);
         }
 
-        /* Active/Open states for animations */
         .modal-overlay.open {
             opacity: 1;
             pointer-events: auto;
@@ -156,7 +147,7 @@
         <div class="modal-box">
             <h2>ჩემი ბრაზიანი ხარ შენ🥰🏆</h2>
             <div class="button-group">
-                <button class="choice-btn btn-back" onclick="goBackToQuestion()">Go Back</button>
+                <button class="choice-btn btn-back" onclick="goBackToQuestion()">არ ვარ</button>
             </div>
         </div>
     </div>
@@ -174,7 +165,6 @@
         }
 
         function goBackToQuestion() {
-            // Closes the final popup but leaves the first one open underneath
             finalModal.classList.remove('open');
         }
     </script>
