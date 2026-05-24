@@ -55,6 +55,10 @@
             z-index: 20; 
         }
 
+        #knowModal {
+            z-index: 30;
+        }
+
         .modal-box {
             background-color: white;
             padding: 40px;
@@ -148,13 +152,21 @@
             <h2>ჩემი ბრაზიანი ხარ შენ🥰🏆</h2>
             <div class="button-group">
                 <button class="choice-btn btn-back" onclick="goBackToQuestion()">არ ვარ</button>
+                <button class="choice-btn btn-yes" onclick="openKnowModal()">კაი ხო</button>
             </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="knowModal">
+        <div class="modal-box">
+            <h2>ბრაზიანიც მიყვარხარ შენ❤️</h2>
         </div>
     </div>
 
     <script>
         const firstModal = document.getElementById('firstModal');
         const finalModal = document.getElementById('finalModal');
+        const knowModal = document.getElementById('knowModal');
 
         function openFirstModal() {
             firstModal.classList.add('open');
@@ -166,6 +178,10 @@
 
         function goBackToQuestion() {
             finalModal.classList.remove('open');
+        }
+
+        function openKnowModal() {
+            knowModal.classList.add('open');
         }
     </script>
 
