@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Message</title>
+    <style>
+        /* Base setup and centering */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Main trigger button */
+        .love-button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            background-color: #ff4d6d;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .love-button:hover {
+            background-color: #ff758f;
+            transform: scale(1.05);
+        }
+
+        /* The Dark Background Overlays */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        /* Stack the final popup cleanly on top of the first one */
+        #finalModal {
+            z-index: 20; 
+        }
+
+        /* The Custom HTML Pop-up Boxes */
+        .modal-box {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 80%;
+            transform: scale(0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-box h2 {
+            color: #ff4d6d;
+            margin: 0 0 25px 0;
+            font-size: 1.8rem;
+        }
+
+        /* Button Container */
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Styling for the choices */
+        .choice-btn {
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .btn-yes {
+            background-color: #ff4d6d;
+        }
+
+        .btn-yes:hover {
+            background-color: #ff758f;
+            transform: scale(1.05);
+        }
+
+        .btn-anyway {
+            background-color: #ff758f;
+        }
+
+        .btn-anyway:hover {
+            background-color: #ff8fa3;
+            transform: scale(1.05);
+        }
+
+        /* Go Back Button styling */
+        .btn-back {
+            background-color: #f0f0f0;
+            color: #555;
+        }
+
+        .btn-back:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.05);
+        }
+
+        /* Active/Open states for animations */
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-overlay.open .modal-box {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+
+    <button class="love-button" onclick="openFirstModal()">დამაჭირე</button>
+
+    <div class="modal-overlay" id="firstModal">
+        <div class="modal-box">
+            <h2>ხოიცი რო ყველაზე მეტად მიყვარხარ კულულ? ❤️</h2>
+            <div class="button-group">
+                <button class="choice-btn btn-yes" onclick="openFinalModal()">კი</button>
+                <button class="choice-btn btn-anyway" onclick="openFinalModal()">მაინც კი</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="finalModal">
+        <div class="modal-box">
+            <h2>ხოდა ბოდიში რომ გაგაბრაზე🥰🏆</h2>
+            <div class="button-group">
+                <button class="choice-btn btn-back" onclick="goBackToQuestion()">Go Back</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const firstModal = document.getElementById('firstModal');
+        const finalModal = document.getElementById('finalModal');
+
+        function openFirstModal() {
+            firstModal.classList.add('open');
+        }
+
+        function openFinalModal() {
+            finalModal.classList.add('open');
+        }
+
+        function goBackToQuestion() {
+            // Closes the final popup but leaves the first one open underneath
+            finalModal.classList.remove('open');
+        }
+    </script>
+
+</body>
+</html>
